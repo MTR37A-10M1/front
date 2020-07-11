@@ -8,6 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@progress/kendo-charts-vue-wrapper": "^2020.2.625",
+    "@progress/kendo-theme-default": "^4.19.0",
+    "@progress/kendo-ui": "^2020.2.617",
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
