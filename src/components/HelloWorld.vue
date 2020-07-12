@@ -1,19 +1,18 @@
 <template>
   <div class="hello">
-    <kendo-chart
-      v-if="fallas"
-      :title="title"
-      :legend="legend"
-      :tooltip="tooltip"
-      :series="series"
-      :theme="'material'"
-    >
-    </kendo-chart>
+    <h1>Bienvenidos a</h1>
+
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <div>
+      <router-link to="Reportes">Reportes</router-link>
+    </div>
+
+    <!-- <button v-on:click="greet()">Reportes</button> -->
   </div>
 </template>
 
 <script>
-const axios = require("axios");
+// const axios = require("axios");
 export default {
   name: "HelloWorld",
   data() {
@@ -21,49 +20,13 @@ export default {
       pendientes: [],
       resueltos: [],
       fallas: 0,
-      title: {
-        text: "Reporte de Fallas",
-      },
-      legend: {
-        position: "top",
-      },
-      tooltip: {
-        visible: true,
-        format: "${0:N}",
-      },
-      series: [
-        {
-          type: "pie",
-          data: [
-            {
-              category: "Pendiente",
-              value: 1,
-            },
-            {
-              category: "Resuelto",
-              value: 1,
-            },
-          ],
-          labels: {
-            visible: true,
-            template: "#: category #",
-          },
-        },
-      ],
     };
   },
-  mounted() {
-    const URI = "https://mtr37a-10m1.azurewebsites.net";
-    const t = this;
-    axios.get(URI + "/api/Falla/all").then(function(response) {
-      response.data.body.map((r) => {
-        if (r.idEstado == 2) t.resueltos.push(r);
-        else t.pendientes.push(r);
-      });
-      t.series[0].data[0].value = t.resueltos.length;
-      t.series[0].data[1].value = t.pendientes.length;
-      t.fallas = t.resueltos.length + t.pendientes.length;
-    });
+  mounted() {},
+  methods: {
+    greet: function() {
+      alert("Hello ");
+    },
   },
 };
 </script>

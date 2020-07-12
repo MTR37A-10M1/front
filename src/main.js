@@ -3,6 +3,7 @@ import App from "./App.vue";
 import "@progress/kendo-ui";
 import "@progress/kendo-theme-default/dist/all.css";
 import { Chart, ChartInstaller } from "@progress/kendo-charts-vue-wrapper";
+import router from "./router";
 
 Vue.use(ChartInstaller);
 
@@ -12,5 +13,6 @@ new Vue({
   components: {
     Chart,
   },
+  router,
   render: (h) => h(App),
 }).$mount("#app");
