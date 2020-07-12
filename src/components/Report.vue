@@ -21,41 +21,41 @@ export default {
       resueltos: [],
       fallas: 0,
       title: {
-        text: "Reporte de Fallas"
+        text: "Reporte de Fallas",
       },
       legend: {
-        position: "top"
+        position: "top",
       },
       tooltip: {
         visible: true,
-        format: "${0:N}"
+        format: "${0:N}",
       },
       series: [
         {
           type: "pie",
           data: [
             {
-              category: "Pendiente",
-              value: 1
+              category: "Resuelto",
+              value: 1,
             },
             {
-              category: "Resuelto",
-              value: 1
-            }
+              category: "Pendiente",
+              value: 1,
+            },
           ],
           labels: {
             visible: true,
-            template: "#: category #"
-          }
-        }
-      ]
+            template: "#: category #",
+          },
+        },
+      ],
     };
   },
   mounted() {
     const URI = "https://mtr37a-10m1.azurewebsites.net";
     const t = this;
     axios.get(URI + "/api/Falla/all").then(function(response) {
-      response.data.body.map(r => {
+      response.data.body.map((r) => {
         if (r.idEstado == 2) t.resueltos.push(r);
         else t.pendientes.push(r);
       });
@@ -63,7 +63,7 @@ export default {
       t.series[0].data[1].value = t.pendientes.length;
       t.fallas = t.resueltos.length + t.pendientes.length;
     });
-  }
+  },
 };
 </script>
 
